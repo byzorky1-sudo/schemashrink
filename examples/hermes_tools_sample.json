@@ -1,0 +1,50 @@
+[
+  {
+    "type": "function",
+    "function": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "execute_code",
+      "name": "execute_code",
+      "description": "Run Python code that calls Hermes tools programmatically. Use when you need 3+ tool calls with logic between them: filtering/reducing large outputs before they enter context, branching, or loops.",
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "code": {
+            "type": "string",
+            "description": "Python code to execute. Import tools with `from hermes_tools import web_search, terminal, ...` and print your final result to stdout."
+          },
+          "reset": {
+            "type": "boolean",
+            "description": "Discard the kernel's persistent state and start fresh before running this code."
+          }
+        },
+        "required": ["code"]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "web_search",
+      "name": "web_search",
+      "description": "Search the web for real-time information, technical docs, and latest news across providers.",
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "query": {
+            "type": "string",
+            "description": "The search query to look up on the web. May include site: and exact keywords."
+          },
+          "limit": {
+            "type": "integer",
+            "description": "Maximum number of results to return. Defaults to 5."
+          }
+        },
+        "required": ["query"]
+      }
+    }
+  }
+]
