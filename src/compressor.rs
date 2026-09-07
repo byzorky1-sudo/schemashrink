@@ -10,6 +10,8 @@ pub struct CompressionConfig {
     pub deterministic_sort: bool,
     /// Truncate long descriptions while preserving essential typing constraints
     pub prune_descriptions: bool,
+    /// Strip type descriptions entirely (aggressive compression mode)
+    pub strip_descriptions: bool,
     /// Maximum allowed description length in characters (if prune_descriptions is true)
     pub max_desc_len: usize,
     /// Minify JSON output (remove whitespace)
@@ -22,6 +24,7 @@ impl Default for CompressionConfig {
             strip_meta: true,
             deterministic_sort: true,
             prune_descriptions: false,
+            strip_descriptions: false,
             max_desc_len: 120,
             minify: true,
         }
@@ -65,8 +68,8 @@ impl SchemaCompressor {
         };
         let compressed_chars = compressed_json.len();
 
-        let original_tokens_est = (original_chars + 3) / 4;
-        let compressed_tokens_est = (compressed_chars + 3) / 4;
+        let original_tokens_est = original_chars.div_ceil(4);
+        let compressed_tokens_est = compressed_chars.div_ceil(4);
         let token_savings_pct = if original_tokens_est > 0 {
             ((original_tokens_est as f64 - compressed_tokens_est as f64)
                 / original_tokens_est as f64)
@@ -116,14 +119,19 @@ impl SchemaCompressor {
                         }
                     }
 
-                    // Prune over-verbose descriptions
-                    if self.config.prune_descriptions && k == "description" {
-                        if let Value::String(s) = v {
-                            if s.len() > self.config.max_desc_len {
-                                let truncated =
-                                    format!("{}...", &s[..self.config.max_desc_len - 3]);
-                                new_map.insert(k.clone(), Value::String(truncated));
-                                continue;
+                    // Strip or prune descriptions
+                    if k == "description" {
+                        if self.config.strip_descriptions {
+                            continue;
+                        }
+                        if self.config.prune_descriptions {
+                            if let Value::String(s) = v {
+                                if s.len() > self.config.max_desc_len {
+                                    let truncated =
+                                        format!("{}...", &s[..self.config.max_desc_len - 3]);
+                                    new_map.insert(k.clone(), Value::String(truncated));
+                                    continue;
+                                }
                             }
                         }
                     }

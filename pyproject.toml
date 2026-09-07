@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "schemashrink"
+version = "0.2.0"
+description = "Zero-latency lossless JSON Schema & Tool Definition compressor for LLM agent runtimes"
+readme = "README.md"
+requires-python = ">=3.8"
+license = { text = "MIT" }
+authors = [{ name = "NousResearch & @byzorky1-sudo" }]
+keywords = ["llm", "json-schema", "tool-calling", "agent", "prompt-caching"]
+
+[project.entry-points."hermes_agent.plugins"]
+schemashrink = "schemashrink:register"

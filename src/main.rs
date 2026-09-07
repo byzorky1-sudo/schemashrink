@@ -50,6 +50,9 @@ enum Commands {
         /// Prune verbose descriptions
         #[arg(long, default_value_t = false)]
         prune_descriptions: bool,
+        /// Strip all descriptions entirely
+        #[arg(long, default_value_t = false)]
+        strip_descriptions: bool,
     },
     /// Model dollar and token savings for production traffic
     Benchmark {
@@ -76,8 +79,9 @@ async fn main() {
             path,
             output,
             prune_descriptions,
+            strip_descriptions,
         }) => {
-            run_compress(&path, output, prune_descriptions);
+            run_compress(&path, output, prune_descriptions, strip_descriptions);
         }
         Some(Commands::Benchmark {
             path,
@@ -88,7 +92,7 @@ async fn main() {
         }
         None => {
             if let Some(file_path) = cli.file {
-                run_compress(&file_path, cli.output, false);
+                run_compress(&file_path, cli.output, false, false);
             } else {
                 println!(
                     "⚡ schemashrink v0.2.0 — Zero-Config Transparent Proxy & Schema Optimizer"
@@ -99,7 +103,12 @@ async fn main() {
     }
 }
 
-fn run_compress(path: &PathBuf, output: Option<PathBuf>, prune_descriptions: bool) {
+fn run_compress(
+    path: &PathBuf,
+    output: Option<PathBuf>,
+    prune_descriptions: bool,
+    strip_descriptions: bool,
+) {
     if !path.exists() {
         eprintln!("❌ Error: File not found at {}", path.display());
         std::process::exit(1);
@@ -110,6 +119,7 @@ fn run_compress(path: &PathBuf, output: Option<PathBuf>, prune_descriptions: boo
         strip_meta: true,
         deterministic_sort: true,
         prune_descriptions,
+        strip_descriptions,
         max_desc_len: 120,
         minify: true,
     };

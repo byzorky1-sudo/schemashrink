@@ -1,5 +1,5 @@
 {
-  "timestamp": 1788704723.1018934,
+  "timestamp": 1788782423.4319234,
   "model": "ag/gemini-3.7-flash-high",
   "total_requests": 30,
   "raw_schema_chars": 3901,
@@ -7,17 +7,17 @@
   "payload_reduction_pct": 15.252499359138682,
   "raw_accuracy_pct": 100.0,
   "comp_accuracy_pct": 100.0,
-  "raw_avg_latency_ms": 3893.5427136000726,
-  "comp_avg_latency_ms": 4033.4009896000985,
+  "raw_avg_latency_ms": 3921.111223133145,
+  "comp_avg_latency_ms": 4170.132071399712,
   "raw_runs": [
     {
       "prompt": "Restart the payment-service pod in the production namespace.",
       "expected_tool": "manage_k8s_pods",
       "tool_called": "manage_k8s_pods",
       "success": true,
-      "prompt_tokens": 3368,
+      "prompt_tokens": 3357,
       "completion_tokens": 36,
-      "latency_ms": 3597.464527000284,
+      "latency_ms": 3309.590256001684,
       "error": null
     },
     {
@@ -25,9 +25,9 @@
       "expected_tool": "github_pr_action",
       "tool_called": "github_pr_action",
       "success": true,
-      "prompt_tokens": 3342,
+      "prompt_tokens": 3261,
       "completion_tokens": 41,
-      "latency_ms": 3877.434224999888,
+      "latency_ms": 3179.625202996249,
       "error": null
     },
     {
@@ -35,9 +35,9 @@
       "expected_tool": "execute_clickhouse_query",
       "tool_called": "execute_clickhouse_query",
       "success": true,
-      "prompt_tokens": 3435,
+      "prompt_tokens": 3437,
       "completion_tokens": 31,
-      "latency_ms": 4416.167694000251,
+      "latency_ms": 4839.734032000706,
       "error": null
     },
     {
@@ -45,9 +45,9 @@
       "expected_tool": "redis_cache_command",
       "tool_called": "redis_cache_command",
       "success": true,
-      "prompt_tokens": 3280,
+      "prompt_tokens": 3374,
       "completion_tokens": 46,
-      "latency_ms": 3352.6900199999545,
+      "latency_ms": 3169.097502002842,
       "error": null
     },
     {
@@ -55,9 +55,9 @@
       "expected_tool": "manage_cloudflare_dns",
       "tool_called": "manage_cloudflare_dns",
       "success": true,
-      "prompt_tokens": 3334,
+      "prompt_tokens": 3337,
       "completion_tokens": 58,
-      "latency_ms": 3554.5391509999718,
+      "latency_ms": 3430.720031996316,
       "error": null
     },
     {
@@ -65,9 +65,9 @@
       "expected_tool": "manage_k8s_pods",
       "tool_called": "manage_k8s_pods",
       "success": true,
-      "prompt_tokens": 3256,
+      "prompt_tokens": 3326,
       "completion_tokens": 36,
-      "latency_ms": 3093.3794249999664,
+      "latency_ms": 3511.052543995902,
       "error": null
     },
     {
@@ -75,9 +75,9 @@
       "expected_tool": "github_pr_action",
       "tool_called": "github_pr_action",
       "success": true,
-      "prompt_tokens": 3316,
+      "prompt_tokens": 3403,
       "completion_tokens": 64,
-      "latency_ms": 3369.178187000216,
+      "latency_ms": 2994.528798997635,
       "error": null
     },
     {
@@ -85,9 +85,9 @@
       "expected_tool": "execute_clickhouse_query",
       "tool_called": "execute_clickhouse_query",
       "success": true,
-      "prompt_tokens": 3549,
+      "prompt_tokens": 3366,
       "completion_tokens": 40,
-      "latency_ms": 4262.158632000137,
+      "latency_ms": 3107.6131779991556,
       "error": null
     },
     {
@@ -95,9 +95,9 @@
       "expected_tool": "redis_cache_command",
       "tool_called": "redis_cache_command",
       "success": true,
-      "prompt_tokens": 3351,
+      "prompt_tokens": 3342,
       "completion_tokens": 40,
-      "latency_ms": 3532.190283000091,
+      "latency_ms": 3641.912922001211,
       "error": null
     },
     {
@@ -105,9 +105,9 @@
       "expected_tool": "manage_k8s_pods",
       "tool_called": "manage_k8s_pods",
       "success": true,
-      "prompt_tokens": 3295,
+      "prompt_tokens": 3387,
       "completion_tokens": 41,
-      "latency_ms": 3361.737021999943,
+      "latency_ms": 3707.907801006513,
       "error": null
     },
     {
@@ -115,9 +115,9 @@
       "expected_tool": "github_pr_action",
       "tool_called": "github_pr_action",
       "success": true,
-      "prompt_tokens": 3341,
+      "prompt_tokens": 3364,
       "completion_tokens": 37,
-      "latency_ms": 4022.6304389998404,
+      "latency_ms": 3310.563282997464,
       "error": null
     },
     {
@@ -125,9 +125,9 @@
       "expected_tool": "redis_cache_command",
       "tool_called": "redis_cache_command",
       "success": true,
-      "prompt_tokens": 3334,
+      "prompt_tokens": 3315,
       "completion_tokens": 38,
-      "latency_ms": 2967.0153189999837,
+      "latency_ms": 2358.3178100016084,
       "error": null
     },
     {
@@ -135,9 +135,9 @@
       "expected_tool": "manage_cloudflare_dns",
       "tool_called": "manage_cloudflare_dns",
       "success": true,
-      "prompt_tokens": 3317,
+      "prompt_tokens": 3332,
       "completion_tokens": 58,
-      "latency_ms": 3472.292818000369,
+      "latency_ms": 3186.9883480030694,
       "error": null
     },
     {
@@ -145,9 +145,9 @@
       "expected_tool": "manage_k8s_pods",
       "tool_called": "manage_k8s_pods",
       "success": true,
-      "prompt_tokens": 3479,
+      "prompt_tokens": 3783,
       "completion_tokens": 41,
-      "latency_ms": 3821.7031359999964,
+      "latency_ms": 4936.737106996588,
       "error": null
     },
     {
@@ -155,9 +155,9 @@
       "expected_tool": "manage_cloudflare_dns",
       "tool_called": "manage_cloudflare_dns",
       "success": true,
-      "prompt_tokens": 4885,
+      "prompt_tokens": 5518,
       "completion_tokens": 49,
-      "latency_ms": 7702.559826000197,
+      "latency_ms": 10132.279530000233,
       "error": null
     }
   ],
@@ -167,9 +167,9 @@
       "expected_tool": "manage_k8s_pods",
       "tool_called": "manage_k8s_pods",
       "success": true,
-      "prompt_tokens": 3345,
+      "prompt_tokens": 3315,
       "completion_tokens": 36,
-      "latency_ms": 3984.3306759998995,
+      "latency_ms": 3391.6686240045237,
       "error": null
     },
     {
@@ -177,9 +177,9 @@
       "expected_tool": "github_pr_action",
       "tool_called": "github_pr_action",
       "success": true,
-      "prompt_tokens": 3286,
+      "prompt_tokens": 3358,
       "completion_tokens": 41,
-      "latency_ms": 3595.9925309998653,
+      "latency_ms": 3259.758314001374,
       "error": null
     },
     {
@@ -187,9 +187,9 @@
       "expected_tool": "execute_clickhouse_query",
       "tool_called": "execute_clickhouse_query",
       "success": true,
-      "prompt_tokens": 3367,
+      "prompt_tokens": 3404,
       "completion_tokens": 31,
-      "latency_ms": 3892.8029469998364,
+      "latency_ms": 3557.4550649980665,
       "error": null
     },
     {
@@ -197,9 +197,9 @@
       "expected_tool": "redis_cache_command",
       "tool_called": "redis_cache_command",
       "success": true,
-      "prompt_tokens": 3289,
+      "prompt_tokens": 3354,
       "completion_tokens": 46,
-      "latency_ms": 4631.192520000241,
+      "latency_ms": 2942.362535999564,
       "error": null
     },
     {
@@ -207,9 +207,9 @@
       "expected_tool": "manage_cloudflare_dns",
       "tool_called": "manage_cloudflare_dns",
       "success": true,
-      "prompt_tokens": 3333,
+      "prompt_tokens": 3340,
       "completion_tokens": 58,
-      "latency_ms": 3753.167097000187,
+      "latency_ms": 4707.7927560021635,
       "error": null
     },
     {
@@ -217,9 +217,9 @@
       "expected_tool": "manage_k8s_pods",
       "tool_called": "manage_k8s_pods",
       "success": true,
-      "prompt_tokens": 3281,
+      "prompt_tokens": 3247,
       "completion_tokens": 36,
-      "latency_ms": 3644.409891000123,
+      "latency_ms": 3357.716016995255,
       "error": null
     },
     {
@@ -227,9 +227,9 @@
       "expected_tool": "github_pr_action",
       "tool_called": "github_pr_action",
       "success": true,
-      "prompt_tokens": 3322,
+      "prompt_tokens": 3317,
       "completion_tokens": 64,
-      "latency_ms": 2856.5538390002985,
+      "latency_ms": 2462.433870998211,
       "error": null
     },
     {
@@ -237,9 +237,9 @@
       "expected_tool": "execute_clickhouse_query",
       "tool_called": "execute_clickhouse_query",
       "success": true,
-      "prompt_tokens": 3547,
+      "prompt_tokens": 3393,
       "completion_tokens": 40,
-      "latency_ms": 3170.3618030001053,
+      "latency_ms": 3409.3044879991794,
       "error": null
     },
     {
@@ -247,9 +247,9 @@
       "expected_tool": "redis_cache_command",
       "tool_called": "redis_cache_command",
       "success": true,
-      "prompt_tokens": 3368,
+      "prompt_tokens": 3346,
       "completion_tokens": 40,
-      "latency_ms": 3087.024346000362,
+      "latency_ms": 4502.7748700013035,
       "error": null
     },
     {
@@ -257,9 +257,9 @@
       "expected_tool": "manage_k8s_pods",
       "tool_called": "manage_k8s_pods",
       "success": true,
-      "prompt_tokens": 3315,
+      "prompt_tokens": 3341,
       "completion_tokens": 41,
-      "latency_ms": 3583.603532000325,
+      "latency_ms": 3137.7947389992187,
       "error": null
     },
     {
@@ -267,9 +267,9 @@
       "expected_tool": "github_pr_action",
       "tool_called": "github_pr_action",
       "success": true,
-      "prompt_tokens": 3299,
+      "prompt_tokens": 3346,
       "completion_tokens": 37,
-      "latency_ms": 3342.896663999909,
+      "latency_ms": 3678.151298998273,
       "error": null
     },
     {
@@ -277,9 +277,9 @@
       "expected_tool": "redis_cache_command",
       "tool_called": "redis_cache_command",
       "success": true,
-      "prompt_tokens": 3258,
+      "prompt_tokens": 3308,
       "completion_tokens": 38,
-      "latency_ms": 2637.374167999951,
+      "latency_ms": 2136.626534003881,
       "error": null
     },
     {
@@ -287,9 +287,9 @@
       "expected_tool": "manage_cloudflare_dns",
       "tool_called": "manage_cloudflare_dns",
       "success": true,
-      "prompt_tokens": 3470,
+      "prompt_tokens": 3315,
       "completion_tokens": 58,
-      "latency_ms": 3869.535577000079,
+      "latency_ms": 3137.1064729974023,
       "error": null
     },
     {
@@ -297,9 +297,9 @@
       "expected_tool": "manage_k8s_pods",
       "tool_called": "manage_k8s_pods",
       "success": true,
-      "prompt_tokens": 3853,
-      "completion_tokens": 49,
-      "latency_ms": 4387.780462000137,
+      "prompt_tokens": 4809,
+      "completion_tokens": 41,
+      "latency_ms": 8798.714110998844,
       "error": null
     },
     {
@@ -307,9 +307,9 @@
       "expected_tool": "manage_cloudflare_dns",
       "tool_called": "manage_cloudflare_dns",
       "success": true,
-      "prompt_tokens": 4992,
+      "prompt_tokens": 4976,
       "completion_tokens": 49,
-      "latency_ms": 10063.988791000156,
+      "latency_ms": 10072.32137399842,
       "error": null
     }
   ]

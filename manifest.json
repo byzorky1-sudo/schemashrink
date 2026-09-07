@@ -1,0 +1,30 @@
+{
+  "name": "schemashrink",
+  "label": "SchemaShrink",
+  "version": "0.2.0",
+  "description": "Zero-latency lossless JSON Schema & Tool Definition compressor for LLM agent runtimes with deterministic prefix KV-cache optimization.",
+  "author": "byzorky1-sudo (Ali)",
+  "homepage": "https://github.com/byzorky1-sudo/schemashrink",
+  "repository": "https://github.com/byzorky1-sudo/schemashrink",
+  "license": "MIT",
+  "entry": "schemashrink/__init__.py",
+  "capabilities": [
+    "tools",
+    "commands",
+    "proxy"
+  ],
+  "tools": [
+    "schemashrink_compress",
+    "schemashrink_benchmark"
+  ],
+  "hooks": [
+    "pre_tool_call"
+  ],
+  "tags": [
+    "compression",
+    "token-optimization",
+    "kv-cache",
+    "tool-calling",
+    "performance"
+  ]
+}

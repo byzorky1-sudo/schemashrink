@@ -1,0 +1,22 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "schemashrink",
+  "version": "0.2.0",
+  "description": "Zero-latency lossless JSON Schema & Tool Definition compressor for LLM agent runtimes with deterministic prefix KV-cache optimization.",
+  "author": {
+    "name": "byzorky1-sudo (Ali)",
+    "url": "https://github.com/byzorky1-sudo/schemashrink"
+  },
+  "homepage": "https://github.com/byzorky1-sudo/schemashrink",
+  "repository": "https://github.com/byzorky1-sudo/schemashrink",
+  "license": "MIT",
+  "keywords": [
+    "llm",
+    "json-schema",
+    "tool-calling",
+    "agent",
+    "prompt-caching",
+    "kv-cache",
+    "compression"
+  ]
+}

@@ -1,0 +1,21 @@
+name: schemashrink
+version: 0.2.0
+description: "Zero-latency lossless JSON Schema & Tool Definition compressor for LLM agent runtimes with deterministic prefix KV-cache optimization."
+author: "NousResearch & @byzorky1-sudo"
+license: MIT
+homepage: "https://github.com/byzorky1-sudo/schemashrink"
+kind: standalone
+provides_tools:
+  - schemashrink_compress
+  - schemashrink_benchmark
+provides_hooks:
+  - pre_tool_call
+capabilities:
+  - tools
+  - commands
+tags:
+  - compression
+  - token-optimization
+  - kv-cache
+  - tool-calling
+  - performance
