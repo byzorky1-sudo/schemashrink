@@ -1,3 +1,4 @@
+use crate::compressor::SchemaCompressor;
 use axum::{
     body::Body,
     extract::State,
@@ -6,7 +7,6 @@ use axum::{
     routing::any,
     Router,
 };
-use crate::compressor::SchemaCompressor;
 use serde_json::Value;
 use std::sync::Arc;
 
@@ -22,13 +22,17 @@ pub async fn start_proxy_server(port: u16, upstream: String) {
         compressor: Arc::new(SchemaCompressor::with_default()),
     };
 
-    let app = Router::new()
-        .fallback(any(proxy_handler))
-        .with_state(state);
+    let app = Router::new().fallback(any(proxy_handler)).with_state(state);
 
     let addr = format!("127.0.0.1:{}", port);
-    println!("\n🚀 schemashrink Zero-Config Transparent Proxy active on http://{}", addr);
-    println!("📡 Intercepting & auto-shrinking tool schemas -> forwarding to: {}\n", upstream);
+    println!(
+        "\n🚀 schemashrink Zero-Config Transparent Proxy active on http://{}",
+        addr
+    );
+    println!(
+        "📡 Intercepting & auto-shrinking tool schemas -> forwarding to: {}\n",
+        upstream
+    );
 
     let listener = tokio::net::TcpListener::bind(&addr).await.unwrap();
     axum::serve(listener, app).await.unwrap();
@@ -47,7 +51,11 @@ async fn proxy_handler(
         .unwrap_or_default();
 
     let is_chat_completion = method == Method::POST && path_and_query.contains("/chat/completions");
-    let target_url = format!("{}{}", state.upstream_url.trim_end_matches('/'), path_and_query);
+    let target_url = format!(
+        "{}{}",
+        state.upstream_url.trim_end_matches('/'),
+        path_and_query
+    );
 
     // Read body bytes
     let body_bytes = match axum::body::to_bytes(req.into_body(), usize::MAX).await {
@@ -67,7 +75,9 @@ async fn proxy_handler(
             if let Some(tools) = json_val.get_mut("tools") {
                 let orig_len = serde_json::to_string(tools).unwrap_or_default().len();
                 let shrunk_tools = state.compressor.compress_value(tools);
-                let shrunk_len = serde_json::to_string(&shrunk_tools).unwrap_or_default().len();
+                let shrunk_len = serde_json::to_string(&shrunk_tools)
+                    .unwrap_or_default()
+                    .len();
 
                 *tools = shrunk_tools;
 

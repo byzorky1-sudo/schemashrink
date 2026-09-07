@@ -90,7 +90,9 @@ async fn main() {
             if let Some(file_path) = cli.file {
                 run_compress(&file_path, cli.output, false);
             } else {
-                println!("⚡ schemashrink v0.2.0 — Zero-Config Transparent Proxy & Schema Optimizer");
+                println!(
+                    "⚡ schemashrink v0.2.0 — Zero-Config Transparent Proxy & Schema Optimizer"
+                );
                 println!("Run `schemashrink proxy --port 20129 --upstream http://127.0.0.1:20128` to start auto-shrinking!");
             }
         }
