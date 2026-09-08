@@ -14,3 +14,9 @@ keywords = ["llm", "json-schema", "tool-calling", "agent", "prompt-caching"]
 
 [project.entry-points."hermes_agent.plugins"]
 schemashrink = "schemashrink:register"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+
+
