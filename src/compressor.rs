@@ -14,6 +14,8 @@ pub struct CompressionConfig {
     pub strip_descriptions: bool,
     /// Maximum allowed description length in characters (if prune_descriptions is true)
     pub max_desc_len: usize,
+    /// Strip empty schema arrays such as `required: []` or `enum: []` that consume unnecessary tokens
+    pub strip_empty_arrays: bool,
     /// Minify JSON output (remove whitespace)
     pub minify: bool,
 }
@@ -26,6 +28,7 @@ impl Default for CompressionConfig {
             prune_descriptions: false,
             strip_descriptions: false,
             max_desc_len: 120,
+            strip_empty_arrays: true,
             minify: true,
         }
     }
@@ -119,17 +122,36 @@ impl SchemaCompressor {
                         }
                     }
 
-                    // Strip or prune descriptions
+                    // Strip empty arrays like required: [] or enum: []
+                    if self.config.strip_empty_arrays {
+                        if let Value::Array(arr) = v {
+                            if arr.is_empty()
+                                && (k == "required"
+                                    || k == "enum"
+                                    || k == "allOf"
+                                    || k == "anyOf"
+                                    || k == "oneOf")
+                            {
+                                continue;
+                            }
+                        }
+                    }
+
+                    // Strip or prune descriptions safely with Unicode awareness
                     if k == "description" {
                         if self.config.strip_descriptions {
                             continue;
                         }
                         if self.config.prune_descriptions {
                             if let Value::String(s) = v {
-                                if s.len() > self.config.max_desc_len {
-                                    let truncated =
-                                        format!("{}...", &s[..self.config.max_desc_len - 3]);
-                                    new_map.insert(k.clone(), Value::String(truncated));
+                                let char_count = s.chars().count();
+                                if char_count > self.config.max_desc_len {
+                                    let take_len = self.config.max_desc_len.saturating_sub(3);
+                                    let truncated: String = s.chars().take(take_len).collect();
+                                    new_map.insert(
+                                        k.clone(),
+                                        Value::String(format!("{}...", truncated)),
+                                    );
                                     continue;
                                 }
                             }

@@ -121,6 +121,7 @@ fn run_compress(
         prune_descriptions,
         strip_descriptions,
         max_desc_len: 120,
+        strip_empty_arrays: true,
         minify: true,
     };
 

@@ -157,3 +157,41 @@ fn test_openai_anthropic_hermes_tool_payloads() {
     assert_eq!(fn_obj["parameters"]["properties"]["path"]["type"], "string");
     assert_eq!(fn_obj["parameters"]["required"][0], "path");
 }
+
+#[test]
+fn test_strip_empty_arrays_and_unicode_pruning() {
+    let schema = json!({
+        "type": "object",
+        "required": [],
+        "properties": {
+            "name": {
+                "type": "string",
+                "enum": [],
+                "description": "🚀 Поиск файлов и документации по кодовой базе"
+            }
+        }
+    });
+
+    let config = CompressionConfig {
+        prune_descriptions: true,
+        max_desc_len: 15,
+        strip_empty_arrays: true,
+        ..Default::default()
+    };
+    let compressor = SchemaCompressor::new(config);
+    let res = compressor
+        .compress_str(&serde_json::to_string(&schema).unwrap())
+        .unwrap();
+
+    let comp_val: serde_json::Value = serde_json::from_str(&res.compressed_json).unwrap();
+    // Empty required and enum must be stripped
+    assert!(comp_val.get("required").is_none());
+    assert!(comp_val["properties"]["name"].get("enum").is_none());
+
+    // Unicode description should be safely truncated with ellipsis without panic
+    let desc = comp_val["properties"]["name"]["description"]
+        .as_str()
+        .unwrap();
+    assert!(desc.ends_with("..."));
+    assert_eq!(desc.chars().count(), 15);
+}
